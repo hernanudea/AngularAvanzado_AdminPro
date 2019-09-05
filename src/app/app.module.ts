@@ -4,10 +4,11 @@ import { NgModule } from '@angular/core';
 //Routes
 import { APP_ROUTES } from './app.routes';
 
-// import { AppRoutingModule } from './app-routing.module';
+// Componentes
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
+
 import { PagesModule } from './pages/pages.module';
 
 
