@@ -7,6 +7,11 @@
                     <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         [attr.ariaValuenow]= "progreso" aria-valuemin="0" aria-valuemax="100" [style.width]="progreso + '%'"></div>
                 </div>
+                <br>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                        [attr.ariaValuenow]= "progreso" aria-valuemin="0" aria-valuemax="100" [style.width]="progreso + '%'"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -18,22 +23,9 @@
         <div class="card">
             <div class="card-body">
 
-
-                <div class="input-group">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" (click)="cambiarValor(-5)">
-                            <i class="mdi mdi-minus"></i>
-                        </button>
-                    </span>
-                    <input type="text" class="form-control" placeholder="" name="progreso" [(ngModel)]="progreso">
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-primary" (click)="cambiarValor(5)">
-                            <i class="mdi mdi-plus"></i>
-                        </button>
-                    </span>
-                </div>
-
-
+                <app-ingrementador nombre="Ptogress Verde" [progreso]="20"></app-ingrementador>
+                <!-- Para pasar valores numericos, debo usar [] -->
+                <!-- Para cadenas quemadas puedo sufrimir los [] -->
             </div>
         </div>
     </div>
@@ -43,7 +35,7 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                texto 1
+                <app-ingrementador nombre="Progess Azul" [progreso]="30"></app-ingrementador>
             </div>
         </div>
     </div>
