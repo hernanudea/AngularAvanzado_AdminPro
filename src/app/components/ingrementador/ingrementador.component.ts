@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 
 @Component({
@@ -8,6 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class IngrementadorComponent implements OnInit {
 
+  @ViewChild('txtProgress', { static: false }) txtProgres: ElementRef // maneja elementos del DOM
   @Input() progreso: number = 50;
   @Input('nombre') leyenda: string = 'Leyenda!';
 
@@ -24,6 +25,7 @@ export class IngrementadorComponent implements OnInit {
   }
 
   cambiarValor(valor: number) {
+
     if (this.progreso >= 100 && valor > 0) {
       this.progreso = 100
       return;
@@ -32,8 +34,24 @@ export class IngrementadorComponent implements OnInit {
       this.progreso = 0;
       return;
     }
+
     this.progreso = this.progreso + valor;
-    
+    this.cambioValor.emit(this.progreso);
+    this.txtProgres.nativeElement.focus();
+
+  }
+
+  onChanges(newValue: number) {
+
+    if (newValue >= 100) {
+      this.progreso = 100;
+    } else if (newValue <= 0) {
+      this.progreso = 0;
+    } else {
+      this.progreso = newValue
+    }
+    this.txtProgres.nativeElement = this.progreso;
+
     this.cambioValor.emit(this.progreso);
   }
 
